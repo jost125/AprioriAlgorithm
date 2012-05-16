@@ -18,9 +18,9 @@ public class CsvTransactionListCreator implements TransactionCreater {
 		this.parser = parser;
 	}
 
-	public List<Transaction> createTransactions(File file) throws FileNotFoundException, IOException {
+	public TransactionList createTransactions(File file) throws FileNotFoundException, IOException {
 		List<List<String>> lines = parser.parse(file);
-		List<Transaction> transactions = new ArrayList<Transaction>();
+		TransactionList transactions = new TransactionList();
 
 		Iterator<List<String>> iterator = lines.iterator();
 		List<String> head = iterator.next();

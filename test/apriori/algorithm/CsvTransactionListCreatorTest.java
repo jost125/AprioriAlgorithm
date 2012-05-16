@@ -24,14 +24,14 @@ public class CsvTransactionListCreatorTest {
 	@Test
 	public void testCreateTransactions() throws FileNotFoundException, IOException {
 		File file = getFile("stats_aggr_binom.csv");
-		List<Transaction> result = csvTransactionListCreator.createTransactions(file);
-		Iterator<Transaction> iterator = result.iterator();
+		TransactionList transactions = csvTransactionListCreator.createTransactions(file);
+		Iterator<Transaction> iterator = transactions.iterator();
 
 		String[] expected1 = {"Krasa"};
 		String[] expected2 = {"Pobyty", "Jidlo a piti"};
 		assertEquals(new HashSet(Arrays.asList(expected1)), iterator.next());
 		assertEquals(new HashSet(Arrays.asList(expected2)), iterator.next());
-		assertEquals(38, result.size());
+		assertEquals(38, transactions.size());
 	}
 
 	private File getFile(String path) {
