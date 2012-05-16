@@ -40,7 +40,7 @@ public class CandidatesCreaterTest {
 
 	@Test
 	public void testCreateCandidateSetFromItems() {
-		CandidateSet expResult = new CandidateSet();
+		CandidateSets expResult = new CandidateSets();
 		ItemSet itemSet1 = new ItemSet();
 		itemSet1.add("foo");
 		ItemSet itemSet2 = new ItemSet();
@@ -50,12 +50,60 @@ public class CandidatesCreaterTest {
 		ItemSet itemSet4 = new ItemSet();
 		itemSet4.add("yellow");
 
-		expResult.add(new Candidate(itemSet1, 1));
-		expResult.add(new Candidate(itemSet2, 2));
-		expResult.add(new Candidate(itemSet3, 1));
-		expResult.add(new Candidate(itemSet4, 1));
+		expResult.add(new ItemSetWithSupport(itemSet1, 1));
+		expResult.add(new ItemSetWithSupport(itemSet2, 2));
+		expResult.add(new ItemSetWithSupport(itemSet3, 1));
+		expResult.add(new ItemSetWithSupport(itemSet4, 1));
 
-		CandidateSet result = candidatesCreater.createCandidateSetFromItems(transactionList, items);
+		CandidateSets result = candidatesCreater.createCandidateSetsFromItems(transactionList, items);
+		assertEquals(expResult, result);
+	}
+
+	@Test
+	public void testCreateCandidateSetFromFrequentItemSets() {
+		FrequentItemSets expResult = new FrequentItemSets();
+		ItemSet expectedItemSet1 = new ItemSet();
+		expectedItemSet1.add("foo");
+		expectedItemSet1.add("bar");
+		ItemSet expectedItemSet2 = new ItemSet();
+		expectedItemSet2.add("foo");
+		expectedItemSet2.add("baz");
+		ItemSet expectedItemSet3 = new ItemSet();
+		expectedItemSet3.add("foo");
+		expectedItemSet3.add("yellow");
+		ItemSet expectedItemSet4 = new ItemSet();
+		expectedItemSet4.add("bar");
+		expectedItemSet4.add("baz");
+		ItemSet expectedItemSet5 = new ItemSet();
+		expectedItemSet5.add("bar");
+		expectedItemSet5.add("yellow");
+		ItemSet expectedItemSet6 = new ItemSet();
+		expectedItemSet6.add("baz");
+		expectedItemSet6.add("yellow");
+
+		expResult.add(new ItemSetWithSupport(expectedItemSet1, 1));
+		expResult.add(new ItemSetWithSupport(expectedItemSet2, 0));
+		expResult.add(new ItemSetWithSupport(expectedItemSet3, 0));
+		expResult.add(new ItemSetWithSupport(expectedItemSet4, 0));
+		expResult.add(new ItemSetWithSupport(expectedItemSet5, 1));
+		expResult.add(new ItemSetWithSupport(expectedItemSet6, 0));
+
+		FrequentItemSets frequentItemSets = new FrequentItemSets();
+		ItemSet itemSet1 = new ItemSet();
+		itemSet1.add("foo");
+		ItemSet itemSet2 = new ItemSet();
+		itemSet2.add("bar");
+		ItemSet itemSet3 = new ItemSet();
+		itemSet3.add("baz");
+		ItemSet itemSet4 = new ItemSet();
+		itemSet4.add("yellow");
+
+		frequentItemSets.add(new ItemSetWithSupport(itemSet1, 1));
+		frequentItemSets.add(new ItemSetWithSupport(itemSet2, 2));
+		frequentItemSets.add(new ItemSetWithSupport(itemSet3, 1));
+		frequentItemSets.add(new ItemSetWithSupport(itemSet4, 1));
+
+		CandidateSets result = candidatesCreater.createCandidateSetsFromFrequentItemSets(transactionList, frequentItemSets);
 		assertEquals(expResult, result);
 	}
 }

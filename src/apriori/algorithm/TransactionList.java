@@ -17,7 +17,7 @@ public class TransactionList extends ArrayList<Transaction> {
 		return items;
 	}
 
-	public int getSupport(ItemSet itemSet) {
+	public int getNumberOfOccurences(ItemSet itemSet) {
 		int support = 0;
 		Iterator<Transaction> iterator = iterator();
 		while (iterator.hasNext()) {

@@ -44,21 +44,21 @@ public class TransactionListTest {
 	public void testGetSupportMoreThenOne() {
 		ItemSet itemSet = new ItemSet();
 		itemSet.add("bar");
-		assertEquals(2, transactionList.getSupport(itemSet));
+		assertEquals(2, transactionList.getNumberOfOccurences(itemSet));
 	}
 
 	@Test
 	public void testGetSupportExactlyOne() {
 		ItemSet itemSet = new ItemSet();
 		itemSet.add("baz");
-		assertEquals(1, transactionList.getSupport(itemSet));
+		assertEquals(1, transactionList.getNumberOfOccurences(itemSet));
 	}
 
 	@Test
 	public void testGetSupportNone() {
 		ItemSet itemSet = new ItemSet();
 		itemSet.add("bleh");
-		assertEquals(0, transactionList.getSupport(itemSet));
+		assertEquals(0, transactionList.getNumberOfOccurences(itemSet));
 	}
 
 	@Test
@@ -66,7 +66,7 @@ public class TransactionListTest {
 		ItemSet itemSet = new ItemSet();
 		itemSet.add("bar");
 		itemSet.add("foo");
-		assertEquals(1, transactionList.getSupport(itemSet));
+		assertEquals(1, transactionList.getNumberOfOccurences(itemSet));
 	}
 
 }
