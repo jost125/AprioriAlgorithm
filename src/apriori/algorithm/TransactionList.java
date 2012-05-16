@@ -16,4 +16,17 @@ public class TransactionList extends ArrayList<Transaction> {
 
 		return items;
 	}
+
+	public int getSupport(ItemSet itemSet) {
+		int support = 0;
+		Iterator<Transaction> iterator = iterator();
+		while (iterator.hasNext()) {
+			Transaction transaction = iterator.next();
+			if (transaction.containsAll(itemSet)) {
+				support++;
+			}
+		}
+
+		return support;
+	}
 }
