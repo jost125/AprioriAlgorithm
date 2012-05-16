@@ -1,6 +1,5 @@
 package apriori.algorithm;
 
-import java.util.Arrays;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -29,7 +28,7 @@ public class TransactionListTest {
 		expResult.add("baz");
 		expResult.add("yellow");
 
-		ItemSet result = transactionList.getItemList();
+		ItemSet result = transactionList.getItemSet();
 		assertEquals(expResult, result);
 	}
 }

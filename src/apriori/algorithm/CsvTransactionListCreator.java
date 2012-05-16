@@ -4,11 +4,8 @@ import apriori.input.CsvParser;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class CsvTransactionListCreator implements TransactionCreater {
 
@@ -18,6 +15,7 @@ public class CsvTransactionListCreator implements TransactionCreater {
 		this.parser = parser;
 	}
 
+	@Override
 	public TransactionList createTransactions(File file) throws FileNotFoundException, IOException {
 		List<List<String>> lines = parser.parse(file);
 		TransactionList transactions = new TransactionList();

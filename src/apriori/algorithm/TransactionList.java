@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class TransactionList extends ArrayList<Transaction> {
-	public ItemSet getItemList() {
+	public ItemSet getItemSet() {
 		ItemSet itemSet = new ItemSet();
 		
 		Iterator<Transaction> iterator = iterator();
