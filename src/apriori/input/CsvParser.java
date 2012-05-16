@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CsvParser {
+public class CsvParser implements Parser {
 	public List<List<String>> parse(File file) throws FileNotFoundException, IOException {
 		BufferedReader bufferedReader = null;
 		List<List<String>> lines = new ArrayList<List<String>>();
