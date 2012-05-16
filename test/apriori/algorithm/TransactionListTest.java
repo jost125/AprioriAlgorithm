@@ -1,5 +1,7 @@
 package apriori.algorithm;
 
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -22,13 +24,13 @@ public class TransactionListTest {
 		transactionList.add(transaction2);
 		transactionList.add(transaction3);
 
-		ItemSet expResult = new ItemSet();
+		Set<String> expResult = new HashSet<String>();
 		expResult.add("foo");
 		expResult.add("bar");
 		expResult.add("baz");
 		expResult.add("yellow");
 
-		ItemSet result = transactionList.getItemSet();
+		Set<String> result = transactionList.getItems();
 		assertEquals(expResult, result);
 	}
 }
