@@ -6,11 +6,11 @@ public class LiftMetric extends Metric {
 	public AssociationRule getAssociationRule(ItemSet superSet, ItemSet subSet, TransactionList transactionList, double minMetricValue) {
 		ItemSet supplement = getSupplement(superSet, subSet);
 
-		double suplementSupport = getSetSupport(supplement, transactionList);
+		double supplementSetSupport = getSetSupport(supplement, transactionList);
 		double subSetSupport = getSetSupport(subSet, transactionList);
 		double superSetSupport = getSetSupport(superSet, transactionList);
 
-		double lift = superSetSupport / (subSetSupport * suplementSupport);
+		double lift = superSetSupport / (subSetSupport * supplementSetSupport);
 
 		AssociationRule associationRule = null;
 		if (lift >= minMetricValue) {
