@@ -1,23 +1,17 @@
 package apriori.algorithm;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 
 public class FrequentItemSetsCreater {
 
-	private TransactionCreater transactionCreater;
 	private CandidatesCreater candidatesCreater;
 
-	public FrequentItemSetsCreater(TransactionCreater transactionCreater, CandidatesCreater candidatesCreater) {
-		this.transactionCreater = transactionCreater;
+	public FrequentItemSetsCreater(CandidatesCreater candidatesCreater) {
 		this.candidatesCreater = candidatesCreater;
 	}
 
-	public FrequentItemSets createItemSet(File file, double minSupport) throws FileNotFoundException, IOException {
-		TransactionList transactions = transactionCreater.createTransactions(file);
+	public FrequentItemSets createItemSet(TransactionList transactions, double minSupport) {
 		Set<String> items = transactions.getItems();
 		CandidateSets candidateSets = candidatesCreater.createCandidateSetsFromItems(transactions, items);
 

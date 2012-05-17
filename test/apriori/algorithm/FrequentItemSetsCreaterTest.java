@@ -9,10 +9,12 @@ import static org.junit.Assert.*;
 public class FrequentItemSetsCreaterTest {
 
 	private FrequentItemSetsCreater frequentItemSetsCreater;
+	private CsvTransactionListCreator csvTransactionListCreator;
 
 	@Before
 	public void setUp() {
-		frequentItemSetsCreater = new FrequentItemSetsCreater(new CsvTransactionListCreator(new CsvParser()), new CandidatesCreater());
+		frequentItemSetsCreater = new FrequentItemSetsCreater(new CandidatesCreater());
+		csvTransactionListCreator = new CsvTransactionListCreator(new CsvParser());
 	}
 
 	@Test
@@ -31,7 +33,7 @@ public class FrequentItemSetsCreaterTest {
 		expResult.add(new ItemSetWithSupport(itemSet2, 19));
 		expResult.add(new ItemSetWithSupport(itemSet3, 18));
 
-		FrequentItemSets result = frequentItemSetsCreater.createItemSet(file, 0.4);
+		FrequentItemSets result = frequentItemSetsCreater.createItemSet(csvTransactionListCreator.createTransactions(file), 0.4);
 		assertEquals(expResult, result);
 	}
 	
