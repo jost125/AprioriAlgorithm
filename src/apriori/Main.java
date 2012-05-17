@@ -4,6 +4,7 @@ import apriori.algorithm.AssociationRule;
 import apriori.algorithm.AssociationRuleSet;
 import apriori.algorithm.AssociationRulesCreator;
 import apriori.algorithm.CandidatesCreater;
+import apriori.algorithm.ConfidenceMetric;
 import apriori.algorithm.CsvTransactionListCreator;
 import apriori.algorithm.FrequentItemSetsCreater;
 import apriori.input.CsvParser;
@@ -19,7 +20,11 @@ public class Main {
 			System.exit(-1);
 		}
 
-		AssociationRulesCreator associationRulesCreator = new AssociationRulesCreator(new CsvTransactionListCreator(new CsvParser()), new FrequentItemSetsCreater(new CandidatesCreater()));
+		AssociationRulesCreator associationRulesCreator = new AssociationRulesCreator(
+			new CsvTransactionListCreator(new CsvParser()),
+			new FrequentItemSetsCreater(new CandidatesCreater()),
+			new ConfidenceMetric()
+		);
 		AssociationRuleSet associationRuleSet = null;
 		try {
 			associationRuleSet = associationRulesCreator.createAssociationRuleSet(new File(args[0]), Double.parseDouble(args[1]), Double.parseDouble(args[2]));

@@ -9,10 +9,12 @@ public class AssociationRulesCreator {
 
 	private TransactionCreater transactionCreater;
 	private FrequentItemSetsCreater frequentItemSetsCreater;
+	private Metric metric;
 
-	public AssociationRulesCreator(TransactionCreater transactionCreater, FrequentItemSetsCreater frequentItemSetsCreater) {
+	public AssociationRulesCreator(TransactionCreater transactionCreater, FrequentItemSetsCreater frequentItemSetsCreater, Metric metric) {
 		this.transactionCreater = transactionCreater;
 		this.frequentItemSetsCreater = frequentItemSetsCreater;
+		this.metric = metric;
 	}
 
 	public AssociationRuleSet createAssociationRuleSet(File file, double minSupport, double minConfidence) throws FileNotFoundException, IOException {
@@ -26,19 +28,8 @@ public class AssociationRulesCreator {
 			ItemSet superSet = frequentItemSet.getItemSet();
 			Set<ItemSet> subSets = superSet.getSubSets();
 			for (ItemSet subSet : subSets) {
-				ItemSet supplement = new ItemSet();
-				supplement.addAll(superSet);
-				supplement.removeAll(subSet);
-
-				int numberOfSuperSetOccurences =  frequentItemSet.getNumberOfOccurences();
-				int numberOfSupplementOccurences = transactions.getNumberOfOccurences(supplement);
-
-				double superSetSupport = (double)numberOfSuperSetOccurences / (double)numberOfTransactions;
-				double supplementSupport = (double)numberOfSupplementOccurences / (double)numberOfTransactions;
-				double confidence = superSetSupport / supplementSupport;
-
-				if (confidence >= minConfidence) {
-					AssociationRule associationRule = new AssociationRule(supplement, subSet, confidence, superSetSupport);
+				AssociationRule associationRule = metric.getAssociationRule(superSet, subSet, transactions, minConfidence);
+				if (associationRule != null) {
 					associationRuleSet.add(associationRule);
 				}
 			}

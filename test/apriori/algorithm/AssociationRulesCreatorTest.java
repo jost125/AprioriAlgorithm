@@ -18,7 +18,8 @@ public class AssociationRulesCreatorTest {
 			),
 			new FrequentItemSetsCreater(
 				new CandidatesCreater()
-			)
+			),
+			new ConfidenceMetric()
 		);
 	}
 
