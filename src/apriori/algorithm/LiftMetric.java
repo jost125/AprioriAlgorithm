@@ -1,22 +1,23 @@
 package apriori.algorithm;
 
-public class ConfidenceMetric extends Metric {
+public class LiftMetric extends Metric {
 
 	@Override
 	public AssociationRule getAssociationRule(ItemSet superSet, ItemSet subSet, TransactionList transactionList, double minMetricValue) {
 		ItemSet supplement = getSupplement(superSet, subSet);
 
+		double suplementSupport = getSetSupport(supplement, transactionList);
+		double subSetSupport = getSetSupport(subSet, transactionList);
 		double superSetSupport = getSetSupport(superSet, transactionList);
-		double supplementSetSupport = getSetSupport(supplement, transactionList);
 
-		double confidence = superSetSupport / supplementSetSupport;
+		double lift = superSetSupport / (subSetSupport * suplementSupport);
 
 		AssociationRule associationRule = null;
-		if (confidence >= minMetricValue) {
-			associationRule = new AssociationRule(supplement, subSet, confidence, superSetSupport);
+		if (lift >= minMetricValue) {
+			associationRule = new AssociationRule(supplement, subSet, lift, superSetSupport);
 		}
 
 		return associationRule;
 	}
-	
+
 }

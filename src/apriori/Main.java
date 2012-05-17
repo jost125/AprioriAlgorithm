@@ -7,23 +7,43 @@ import apriori.algorithm.CandidatesCreater;
 import apriori.algorithm.ConfidenceMetric;
 import apriori.algorithm.CsvTransactionListCreator;
 import apriori.algorithm.FrequentItemSetsCreater;
+import apriori.algorithm.LiftMetric;
+import apriori.algorithm.Metric;
 import apriori.input.CsvParser;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class Main {
 
 	public static void main(String[] args) {
-		if (args.length != 3) {
-			System.err.println("Usage: apriori.jar <file> <minSupport> <minConfidence>");
-			System.exit(-1);
+		if (args.length != 3 && args.length != 4) {
+			usage();
+		}
+
+		String metricName = "";
+		if (args.length == 4) {
+			metricName = args[3];
+		} else {
+			metricName = "conf";
+		}
+
+		Metric metric = null;
+		if (metricName.equals("conf")) {
+			metric = new ConfidenceMetric();
+		} else if (metricName.equals("lift")) {
+			metric = new LiftMetric();
+		} else if (metricName.equals("conv")) {
+			throw new NotImplementedException();
+		} else {
+			usage();
 		}
 
 		AssociationRulesCreator associationRulesCreator = new AssociationRulesCreator(
 			new CsvTransactionListCreator(new CsvParser()),
 			new FrequentItemSetsCreater(new CandidatesCreater()),
-			new ConfidenceMetric()
+			metric
 		);
 		AssociationRuleSet associationRuleSet = null;
 		try {
@@ -40,8 +60,18 @@ public class Main {
 		}
 
 		for (AssociationRule associationRule : associationRuleSet) {
-			System.out.println(associationRule);
+			System.out.println(
+				associationRule.getFromItemSet().toString() + " => "
+				+ associationRule.getToItemSet().toString()
+				+ " " + metricName + ": " + String.format("%.3f", associationRule.getMatricValue())
+				+ ", support:" + String.format("%.3f", associationRule.getSupport())
+			);
 		}
+	}
+
+	public static void usage() {
+		System.err.println("Usage: apriori.jar <file> <minSupport> <minMatricValue> [conf|lift|conv]");
+		System.exit(-1);
 	}
 
 }

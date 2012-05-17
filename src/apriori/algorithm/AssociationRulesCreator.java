@@ -17,7 +17,7 @@ public class AssociationRulesCreator {
 		this.metric = metric;
 	}
 
-	public AssociationRuleSet createAssociationRuleSet(File file, double minSupport, double minConfidence) throws FileNotFoundException, IOException {
+	public AssociationRuleSet createAssociationRuleSet(File file, double minSupport, double minMetricValue) throws FileNotFoundException, IOException {
 		AssociationRuleSet associationRuleSet = new AssociationRuleSet();
 		TransactionList transactions = transactionCreater.createTransactions(file);
 		FrequentItemSets frequentItemSets = frequentItemSetsCreater.createItemSet(transactions, minSupport);
@@ -28,7 +28,7 @@ public class AssociationRulesCreator {
 			ItemSet superSet = frequentItemSet.getItemSet();
 			Set<ItemSet> subSets = superSet.getSubSets();
 			for (ItemSet subSet : subSets) {
-				AssociationRule associationRule = metric.getAssociationRule(superSet, subSet, transactions, minConfidence);
+				AssociationRule associationRule = metric.getAssociationRule(superSet, subSet, transactions, minMetricValue);
 				if (associationRule != null) {
 					associationRuleSet.add(associationRule);
 				}

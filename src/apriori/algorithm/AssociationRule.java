@@ -3,13 +3,13 @@ package apriori.algorithm;
 public class AssociationRule {
 	private ItemSet fromItemSet;
 	private ItemSet toItemSet;
-	private double confidence;
+	private double matricValue;
 	private double support;
 
 	public AssociationRule(ItemSet fromItemSet, ItemSet toItemSet, double confidence, double support) {
 		this.fromItemSet = fromItemSet;
 		this.toItemSet = toItemSet;
-		this.confidence = confidence;
+		this.matricValue = confidence;
 		this.support = support;
 	}
 
@@ -28,7 +28,7 @@ public class AssociationRule {
 		if (this.toItemSet != other.toItemSet && (this.toItemSet == null || !this.toItemSet.equals(other.toItemSet))) {
 			return false;
 		}
-		if (Double.doubleToLongBits(this.confidence) != Double.doubleToLongBits(other.confidence)) {
+		if (Double.doubleToLongBits(this.matricValue) != Double.doubleToLongBits(other.matricValue)) {
 			return false;
 		}
 		if (Double.doubleToLongBits(this.support) != Double.doubleToLongBits(other.support)) {
@@ -42,14 +42,30 @@ public class AssociationRule {
 		int hash = 3;
 		hash = 47 * hash + (this.fromItemSet != null ? this.fromItemSet.hashCode() : 0);
 		hash = 47 * hash + (this.toItemSet != null ? this.toItemSet.hashCode() : 0);
-		hash = 47 * hash + (int) (Double.doubleToLongBits(this.confidence) ^ (Double.doubleToLongBits(this.confidence) >>> 32));
+		hash = 47 * hash + (int) (Double.doubleToLongBits(this.matricValue) ^ (Double.doubleToLongBits(this.matricValue) >>> 32));
 		hash = 47 * hash + (int) (Double.doubleToLongBits(this.support) ^ (Double.doubleToLongBits(this.support) >>> 32));
 		return hash;
 	}
 
 	@Override
 	public String toString() {
-		return fromItemSet.toString() + " => " + toItemSet.toString() + "(confidence:" + String.format("%.3f", confidence) + ", support:" + String.format("%.3f", support) + ")";
+		return fromItemSet.toString() + " => " + toItemSet.toString() + "(confidence:" + String.format("%.3f", matricValue) + ", support:" + String.format("%.3f", support) + ")";
+	}
+
+	public ItemSet getFromItemSet() {
+		return fromItemSet;
+	}
+
+	public double getMatricValue() {
+		return matricValue;
+	}
+
+	public double getSupport() {
+		return support;
+	}
+
+	public ItemSet getToItemSet() {
+		return toItemSet;
 	}
 
 }
