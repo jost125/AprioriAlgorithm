@@ -8,10 +8,10 @@ import java.util.Set;
 public class AssociationRulesCreator {
 
 	private TransactionCreater transactionCreater;
-	private FrequentItemSetsCreater frequentItemSetsCreater;
+	private FrequentItemSetsCreator frequentItemSetsCreater;
 	private Metric metric;
 
-	public AssociationRulesCreator(TransactionCreater transactionCreater, FrequentItemSetsCreater frequentItemSetsCreater, Metric metric) {
+	public AssociationRulesCreator(TransactionCreater transactionCreater, FrequentItemSetsCreator frequentItemSetsCreater, Metric metric) {
 		this.transactionCreater = transactionCreater;
 		this.frequentItemSetsCreater = frequentItemSetsCreater;
 		this.metric = metric;

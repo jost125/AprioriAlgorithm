@@ -3,11 +3,11 @@ package apriori;
 import apriori.algorithm.AssociationRule;
 import apriori.algorithm.AssociationRuleSet;
 import apriori.algorithm.AssociationRulesCreator;
-import apriori.algorithm.CandidatesCreater;
+import apriori.algorithm.CandidatesCreator;
 import apriori.algorithm.ConfidenceMetric;
 import apriori.algorithm.ConvMetric;
 import apriori.algorithm.CsvTransactionListCreator;
-import apriori.algorithm.FrequentItemSetsCreater;
+import apriori.algorithm.FrequentItemSetsCreator;
 import apriori.algorithm.LiftMetric;
 import apriori.algorithm.Metric;
 import apriori.input.CsvParser;
@@ -43,7 +43,7 @@ public class Main {
 
 		AssociationRulesCreator associationRulesCreator = new AssociationRulesCreator(
 			new CsvTransactionListCreator(new CsvParser()),
-			new FrequentItemSetsCreater(new CandidatesCreater()),
+			new FrequentItemSetsCreator(new CandidatesCreator()),
 			metric
 		);
 		AssociationRuleSet associationRuleSet = null;

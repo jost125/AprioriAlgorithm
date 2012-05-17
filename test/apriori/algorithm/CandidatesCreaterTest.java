@@ -8,13 +8,13 @@ import static org.junit.Assert.*;
 
 public class CandidatesCreaterTest {
 
-	private CandidatesCreater candidatesCreater;
+	private CandidatesCreator candidatesCreater;
 	private TransactionList transactionList;
 	private Set<String> items;
 
 	@Before
 	public void setUp() {
-		candidatesCreater = new CandidatesCreater();
+		candidatesCreater = new CandidatesCreator();
 		
 		transactionList = new TransactionList();
 		Transaction transaction1 = new Transaction();

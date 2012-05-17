@@ -3,11 +3,11 @@ package apriori.algorithm;
 import java.util.Iterator;
 import java.util.Set;
 
-public class FrequentItemSetsCreater {
+public class FrequentItemSetsCreator {
 
-	private CandidatesCreater candidatesCreater;
+	private CandidatesCreator candidatesCreater;
 
-	public FrequentItemSetsCreater(CandidatesCreater candidatesCreater) {
+	public FrequentItemSetsCreator(CandidatesCreator candidatesCreater) {
 		this.candidatesCreater = candidatesCreater;
 	}
 

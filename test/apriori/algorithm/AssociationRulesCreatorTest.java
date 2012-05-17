@@ -16,8 +16,8 @@ public class AssociationRulesCreatorTest {
 			new CsvTransactionListCreator(
 				new CsvParser()
 			),
-			new FrequentItemSetsCreater(
-				new CandidatesCreater()
+			new FrequentItemSetsCreator(
+				new CandidatesCreator()
 			),
 			new ConfidenceMetric()
 		);

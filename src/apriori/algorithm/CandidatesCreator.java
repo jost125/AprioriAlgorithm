@@ -3,7 +3,7 @@ package apriori.algorithm;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CandidatesCreater {
+public class CandidatesCreator {
 	public CandidateSets createCandidateSetsFromItems(TransactionList transactionList, Set<String> items) {
 		CandidateSets candidateSet = new CandidateSets();
 

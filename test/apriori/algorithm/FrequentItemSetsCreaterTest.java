@@ -8,12 +8,12 @@ import static org.junit.Assert.*;
 
 public class FrequentItemSetsCreaterTest {
 
-	private FrequentItemSetsCreater frequentItemSetsCreater;
+	private FrequentItemSetsCreator frequentItemSetsCreater;
 	private CsvTransactionListCreator csvTransactionListCreator;
 
 	@Before
 	public void setUp() {
-		frequentItemSetsCreater = new FrequentItemSetsCreater(new CandidatesCreater());
+		frequentItemSetsCreater = new FrequentItemSetsCreator(new CandidatesCreator());
 		csvTransactionListCreator = new CsvTransactionListCreator(new CsvParser());
 	}
 
