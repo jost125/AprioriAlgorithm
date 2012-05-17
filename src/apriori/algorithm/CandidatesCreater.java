@@ -11,7 +11,7 @@ public class CandidatesCreater {
 			ItemSet itemSet = new ItemSet();
 			itemSet.add(item);
 			
-			candidateSet.add(new ItemSetWithSupport(itemSet, transactionList.getNumberOfOccurences(itemSet)));
+			candidateSet.add(new ItemSetWithNumberOfOccurences(itemSet, transactionList.getNumberOfOccurences(itemSet)));
 		}
 
 		return candidateSet;
@@ -22,15 +22,15 @@ public class CandidatesCreater {
 
 		int itemSetSize = frequentItemSets.iterator().next().getItemSet().size();
 
-		for (ItemSetWithSupport itemSet1 : frequentItemSets) {
-			for (ItemSetWithSupport itemSet2 : frequentItemSets) {
+		for (ItemSetWithNumberOfOccurences itemSet1 : frequentItemSets) {
+			for (ItemSetWithNumberOfOccurences itemSet2 : frequentItemSets) {
 				if (!itemSet1.equals(itemSet2)) {
 
 					if (itemSetSize == 1 || intersection(itemSet1.getItemSet(), itemSet2.getItemSet()).size() == itemSetSize - 1) {
 						ItemSet itemSet = new ItemSet();
 						itemSet.addAll(itemSet1.getItemSet());
 						itemSet.addAll(itemSet2.getItemSet());
-						candidateSet.add(new ItemSetWithSupport(itemSet, transactionList.getNumberOfOccurences(itemSet)));
+						candidateSet.add(new ItemSetWithNumberOfOccurences(itemSet, transactionList.getNumberOfOccurences(itemSet)));
 					}
 				}
 			}

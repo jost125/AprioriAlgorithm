@@ -28,13 +28,13 @@ public class FrequentItemSetsCreater {
 	}
 
 	private FrequentItemSets filterCandidates(CandidateSets candidateSets, TransactionList transactionList, double minSupport) {
-		Iterator<ItemSetWithSupport> iterator = candidateSets.iterator();
+		Iterator<ItemSetWithNumberOfOccurences> iterator = candidateSets.iterator();
 		int transactionSize = transactionList.size();
 		
 		CandidateSets candidatesToBeRemoved = new CandidateSets();
 
 		while (iterator.hasNext()) {
-			ItemSetWithSupport candidate = iterator.next();
+			ItemSetWithNumberOfOccurences candidate = iterator.next();
 			double support = (double)candidate.getNumberOfOccurences() / (double)transactionSize;
 			if (support < minSupport) {
 				candidatesToBeRemoved.add(candidate);

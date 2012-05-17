@@ -50,10 +50,10 @@ public class CandidatesCreaterTest {
 		ItemSet itemSet4 = new ItemSet();
 		itemSet4.add("yellow");
 
-		expResult.add(new ItemSetWithSupport(itemSet1, 1));
-		expResult.add(new ItemSetWithSupport(itemSet2, 2));
-		expResult.add(new ItemSetWithSupport(itemSet3, 1));
-		expResult.add(new ItemSetWithSupport(itemSet4, 1));
+		expResult.add(new ItemSetWithNumberOfOccurences(itemSet1, 1));
+		expResult.add(new ItemSetWithNumberOfOccurences(itemSet2, 2));
+		expResult.add(new ItemSetWithNumberOfOccurences(itemSet3, 1));
+		expResult.add(new ItemSetWithNumberOfOccurences(itemSet4, 1));
 
 		CandidateSets result = candidatesCreater.createCandidateSetsFromItems(transactionList, items);
 		assertEquals(expResult, result);
@@ -81,12 +81,12 @@ public class CandidatesCreaterTest {
 		expectedItemSet6.add("baz");
 		expectedItemSet6.add("yellow");
 
-		expResult.add(new ItemSetWithSupport(expectedItemSet1, 1));
-		expResult.add(new ItemSetWithSupport(expectedItemSet2, 0));
-		expResult.add(new ItemSetWithSupport(expectedItemSet3, 0));
-		expResult.add(new ItemSetWithSupport(expectedItemSet4, 0));
-		expResult.add(new ItemSetWithSupport(expectedItemSet5, 1));
-		expResult.add(new ItemSetWithSupport(expectedItemSet6, 0));
+		expResult.add(new ItemSetWithNumberOfOccurences(expectedItemSet1, 1));
+		expResult.add(new ItemSetWithNumberOfOccurences(expectedItemSet2, 0));
+		expResult.add(new ItemSetWithNumberOfOccurences(expectedItemSet3, 0));
+		expResult.add(new ItemSetWithNumberOfOccurences(expectedItemSet4, 0));
+		expResult.add(new ItemSetWithNumberOfOccurences(expectedItemSet5, 1));
+		expResult.add(new ItemSetWithNumberOfOccurences(expectedItemSet6, 0));
 
 		FrequentItemSets frequentItemSets = new FrequentItemSets();
 		ItemSet itemSet1 = new ItemSet();
@@ -98,10 +98,10 @@ public class CandidatesCreaterTest {
 		ItemSet itemSet4 = new ItemSet();
 		itemSet4.add("yellow");
 
-		frequentItemSets.add(new ItemSetWithSupport(itemSet1, 1));
-		frequentItemSets.add(new ItemSetWithSupport(itemSet2, 2));
-		frequentItemSets.add(new ItemSetWithSupport(itemSet3, 1));
-		frequentItemSets.add(new ItemSetWithSupport(itemSet4, 1));
+		frequentItemSets.add(new ItemSetWithNumberOfOccurences(itemSet1, 1));
+		frequentItemSets.add(new ItemSetWithNumberOfOccurences(itemSet2, 2));
+		frequentItemSets.add(new ItemSetWithNumberOfOccurences(itemSet3, 1));
+		frequentItemSets.add(new ItemSetWithNumberOfOccurences(itemSet4, 1));
 
 		CandidateSets result = candidatesCreater.createCandidateSetsFromFrequentItemSets(transactionList, frequentItemSets);
 		assertEquals(expResult, result);

@@ -29,9 +29,9 @@ public class FrequentItemSetsCreaterTest {
 		ItemSet itemSet3 = new ItemSet();
 		itemSet3.add("Ostatni");
 
-		expResult.add(new ItemSetWithSupport(itemSet1, 16));
-		expResult.add(new ItemSetWithSupport(itemSet2, 19));
-		expResult.add(new ItemSetWithSupport(itemSet3, 18));
+		expResult.add(new ItemSetWithNumberOfOccurences(itemSet1, 16));
+		expResult.add(new ItemSetWithNumberOfOccurences(itemSet2, 19));
+		expResult.add(new ItemSetWithNumberOfOccurences(itemSet3, 18));
 
 		FrequentItemSets result = frequentItemSetsCreater.createItemSet(csvTransactionListCreator.createTransactions(file), 0.4);
 		assertEquals(expResult, result);

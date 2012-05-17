@@ -2,6 +2,6 @@ package apriori.algorithm;
 
 import java.util.HashSet;
 
-public class FrequentItemSets extends HashSet<ItemSetWithSupport> {
+public class FrequentItemSets extends HashSet<ItemSetWithNumberOfOccurences> {
 
 }

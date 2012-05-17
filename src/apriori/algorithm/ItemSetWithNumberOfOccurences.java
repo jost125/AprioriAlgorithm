@@ -1,11 +1,11 @@
 package apriori.algorithm;
 
-public class ItemSetWithSupport {
+public class ItemSetWithNumberOfOccurences {
 
 	private ItemSet itemSet;
 	private int numberOfOccurences;
 
-	public ItemSetWithSupport(ItemSet itemSet, int numberOfOccurences) {
+	public ItemSetWithNumberOfOccurences(ItemSet itemSet, int numberOfOccurences) {
 		this.itemSet = itemSet;
 		this.numberOfOccurences = numberOfOccurences;
 	}
@@ -26,7 +26,7 @@ public class ItemSetWithSupport {
 		if (getClass() != obj.getClass()) {
 			return false;
 		}
-		final ItemSetWithSupport other = (ItemSetWithSupport) obj;
+		final ItemSetWithNumberOfOccurences other = (ItemSetWithNumberOfOccurences) obj;
 		if (this.itemSet != other.itemSet && (this.itemSet == null || !this.itemSet.equals(other.itemSet))) {
 			return false;
 		}
