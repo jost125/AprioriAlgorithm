@@ -5,6 +5,7 @@ import apriori.algorithm.AssociationRuleSet;
 import apriori.algorithm.AssociationRulesCreator;
 import apriori.algorithm.CandidatesCreater;
 import apriori.algorithm.ConfidenceMetric;
+import apriori.algorithm.ConvMetric;
 import apriori.algorithm.CsvTransactionListCreator;
 import apriori.algorithm.FrequentItemSetsCreater;
 import apriori.algorithm.LiftMetric;
@@ -35,7 +36,7 @@ public class Main {
 		} else if (metricName.equals("lift")) {
 			metric = new LiftMetric();
 		} else if (metricName.equals("conv")) {
-			throw new NotImplementedException();
+			metric = new ConvMetric();
 		} else {
 			usage();
 		}
