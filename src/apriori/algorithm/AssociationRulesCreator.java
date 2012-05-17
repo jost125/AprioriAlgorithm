@@ -22,8 +22,6 @@ public class AssociationRulesCreator {
 		TransactionList transactions = transactionCreater.createTransactions(file);
 		FrequentItemSets frequentItemSets = frequentItemSetsCreater.createItemSet(transactions, minSupport);
 
-		int numberOfTransactions = transactions.size();
-
 		for (ItemSetWithNumberOfOccurences frequentItemSet : frequentItemSets) {
 			ItemSet superSet = frequentItemSet.getItemSet();
 			Set<ItemSet> subSets = superSet.getSubSets();
