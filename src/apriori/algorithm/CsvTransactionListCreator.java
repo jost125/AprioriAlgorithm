@@ -29,7 +29,7 @@ public class CsvTransactionListCreator implements TransactionCreater {
 			
 			for (int i = 0; i < values.size(); i++) {
 				String value = values.get(i);
-				if (Integer.parseInt(value) == 1) {
+				if (Double.parseDouble(value) == 1.0) {
 					transaction.add(head.get(i));
 				}
 			}
