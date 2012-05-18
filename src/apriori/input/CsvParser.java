@@ -18,7 +18,8 @@ public class CsvParser implements Parser {
 		try {
 			bufferedReader = new BufferedReader(new FileReader(file));
 			for (String line = null; (line = bufferedReader.readLine()) != null; ) {
-				lines.add(Arrays.asList(line.split(";")));
+				line = line.replaceAll("(^\"|\"$)", "");
+				lines.add(Arrays.asList(line.split("\"?;\"?")));
 			}
 		} finally {
 			bufferedReader.close();
