@@ -27,10 +27,14 @@ public class CandidatesCreator {
 				if (!itemSet1.equals(itemSet2)) {
 
 					if (itemSetSize == 1 || intersection(itemSet1.getItemSet(), itemSet2.getItemSet()).size() == itemSetSize - 1) {
-						ItemSet itemSet = new ItemSet();
-						itemSet.addAll(itemSet1.getItemSet());
-						itemSet.addAll(itemSet2.getItemSet());
-						candidateSet.add(new ItemSetWithNumberOfOccurences(itemSet, transactionList.getNumberOfOccurences(itemSet)));
+						ItemSet union = new ItemSet();
+						union.addAll(itemSet1.getItemSet());
+						union.addAll(itemSet2.getItemSet());
+
+						if  (frequentItemSets.getSetOfItemSet().containsAll(union.getSubSetsOfSize(itemSetSize))) {
+							candidateSet.add(new ItemSetWithNumberOfOccurences(union, transactionList.getNumberOfOccurences(union)));
+						}
+
 					}
 				}
 			}

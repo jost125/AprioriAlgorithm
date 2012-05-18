@@ -2,6 +2,7 @@ package apriori.algorithm;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -11,6 +12,20 @@ public class ItemSet extends TreeSet<String> {
 		Set<ItemSet> subsets = powerSet(this);
 		subsets.remove(new ItemSet());
 		subsets.remove(this);
+		return subsets;
+	}
+
+	public Set<ItemSet> getSubSetsOfSize(int subSetSize) {
+		Set<ItemSet> subsets = powerSet(this);
+	
+		Iterator<ItemSet> iterator = subsets.iterator();
+		while (iterator.hasNext()) {
+			ItemSet current = iterator.next();
+			if (current.size() != subSetSize) {
+				iterator.remove();
+			}
+		}
+
 		return subsets;
 	}
 
