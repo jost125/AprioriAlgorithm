@@ -65,7 +65,7 @@ public class Main {
 				associationRule.getFromItemSet().toString() + " => "
 				+ associationRule.getToItemSet().toString()
 				+ " " + metricName + ": " + String.format("%.3f", associationRule.getMatricValue())
-				+ ", support:" + String.format("%.3f", associationRule.getSupport())
+				+ ", support: " + String.format("%.3f", associationRule.getSupport())
 			);
 		}
 	}

@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
-public class ItemSet extends HashSet<String> {
+public class ItemSet extends TreeSet<String> {
 	public Set<ItemSet> getSubSets() {
 		Set<ItemSet> subsets = powerSet(this);
 		subsets.remove(new ItemSet());
